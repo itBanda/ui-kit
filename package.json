@@ -10,7 +10,8 @@
     "format": "prettier --write .",
     "lint": "eslint --fix --no-cache **/*.{tsx,ts,jsx,js} --no-error-on-unmatched-pattern",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
