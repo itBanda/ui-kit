@@ -1,6 +1,14 @@
-import React from 'react'
+// import { ComponentPropsWithoutRef } from 'react'
 
-import './button.css'
+// type Props = ComponentPropsWithoutRef<'button'>
+
+// export function Button(props: Props) {
+//   return (
+//     <button className='mx-10 bg-slate-500' {...props} type='submit'>
+//       Hello Hello hello
+//     </button>
+//   )
+// }
 
 export interface ButtonProps {
   /**
