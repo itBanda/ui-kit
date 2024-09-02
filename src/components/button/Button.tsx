@@ -10,7 +10,7 @@
 //   )
 // }
 
-export interface ButtonProps {
+export type ButtonProps = {
   /**
    * What background color to use
    */

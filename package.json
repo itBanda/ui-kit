@@ -3,6 +3,21 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./style.css": "./dist/style.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -55,6 +70,7 @@
     "tailwindcss": "3.4.10",
     "typescript": "5",
     "typescript-eslint": "8.0.1",
-    "vite": "5.4.1"
+    "vite": "5.4.1",
+    "vite-plugin-dts": "^4.1.0"
   }
 }
