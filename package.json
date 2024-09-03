@@ -24,7 +24,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc --emitDeclarationOnly && postcss src/global.css -o dist/style.css",
+    "build": "vite build && tsc --emitDeclarationOnly",
     "preview": "vite preview",
     "format": "prettier --write .",
     "lint": "eslint --fix --no-cache **/*.{tsx,ts,jsx,js} --no-error-on-unmatched-pattern",
