@@ -4,6 +4,8 @@ import react from '@vitejs/plugin-react-swc'
 import { defineConfig } from 'vite'
 // import dts from 'vite-plugin-dts'
 
+import tailwindcss from 'tailwindcss'
+
 import { dependencies, devDependencies } from './package.json'
 
 export default defineConfig({
@@ -30,6 +32,11 @@ export default defineConfig({
       },
     },
     target: 'esnext',
+  },
+  css: {
+    postcss: {
+      plugins: [tailwindcss],
+    },
   },
   plugins: [
     react(),
