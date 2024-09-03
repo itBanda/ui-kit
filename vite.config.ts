@@ -2,7 +2,7 @@ import { join, resolve } from 'node:path'
 
 import react from '@vitejs/plugin-react-swc'
 import { defineConfig } from 'vite'
-import dts from 'vite-plugin-dts'
+// import dts from 'vite-plugin-dts'
 
 import { dependencies, devDependencies } from './package.json'
 
@@ -33,7 +33,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    dts({ rollupTypes: true }), // Output .d.ts files
+    // dts({ rollupTypes: true }), // Output .d.ts files
   ],
 })
 
