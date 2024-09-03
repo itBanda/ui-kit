@@ -1,6 +1,7 @@
-import { resolve } from 'path'
+import { join, resolve } from 'node:path'
 
 import react from '@vitejs/plugin-react-swc'
+import tailwindcss from 'tailwindcss'
 import { defineConfig } from 'vite'
 
 import { dependencies, devDependencies } from './package.json'
@@ -8,11 +9,14 @@ import { dependencies, devDependencies } from './package.json'
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: resolve(__dirname, join('src', 'index.ts')),
       fileName: 'index',
-      name: 'uikit-inctagram',
+      formats: ['es', 'cjs'],
+      name: 'ui-kit',
     },
+    minify: false,
     rollupOptions: {
+      // Exclude peer dependencies from the bundle to reduce bundle size
       external: [
         ...Object.keys(dependencies),
         ...Object.keys(devDependencies),
@@ -20,12 +24,16 @@ export default defineConfig({
       ],
       output: {
         dir: 'dist',
-        entryFileNames: '[name].js',
-        format: 'es',
-        globals: {
-          react: 'React',
-        },
+        entryFileNames: '[name].cjs',
+        exports: 'named',
+        format: 'cjs',
       },
+    },
+    target: 'esnext',
+  },
+  css: {
+    postcss: {
+      plugins: [tailwindcss()],
     },
   },
   plugins: [react()],
