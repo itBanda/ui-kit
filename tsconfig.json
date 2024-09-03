@@ -79,7 +79,7 @@
 //   "include": ["./src/**/*.ts", "./src/**/*.tsx"],
 //   "exclude": ["./src/**/*.stories.*"]
 // }
-
+//////////////////////////////////////////////////////////////
 {
   "extends": [],
   "compilerOptions": {
@@ -157,3 +157,38 @@
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],
   "exclude": ["./src/**/*.stories.*"]
 }
+
+// {
+//   "compilerOptions": {
+//     "target": "ESNext",
+//     "lib": ["DOM", "DOM.Iterable", "ESNext"],
+//     "module": "ESNext",
+//     "types": ["vite/client"],
+//     "noEmit": false, // Обязательно для генерации выходных файлов
+//     "outDir": "./dist", // Все файлы будут сгенерированы в эту папку
+//     "moduleResolution": "Bundler",
+//     "jsx": "react-jsx",
+//     "skipLibCheck": true,
+//     "resolveJsonModule": true,
+//     "declaration": true, // Генерация файлов типов
+//     "declarationMap": true, // Карты исходников для файлов типов
+//     // Удалите "declarationDir", чтобы все файлы типов генерировались в "outDir"
+//     "allowJs": false,
+//     "esModuleInterop": true,
+//     "allowSyntheticDefaultImports": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "isolatedModules": true,
+//     "useDefineForClassFields": true,
+//     "strict": true,
+//     "noFallthroughCasesInSwitch": true,
+//     "noImplicitOverride": true,
+//     "noImplicitReturns": true,
+//     "noImplicitThis": true,
+//     "noPropertyAccessFromIndexSignature": false,
+//     "noUncheckedIndexedAccess": true,
+//     "noUnusedLocals": false,
+//     "noUnusedParameters": true
+//   },
+//   "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+//   "exclude": ["./src/**/*.stories.*"]
+// }
