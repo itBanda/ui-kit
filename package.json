@@ -3,9 +3,28 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/index.cjs"
+      },
+      "require": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build && tsc --emitDeclarationOnly",
     "preview": "vite preview",
     "format": "prettier --write .",
     "lint": "eslint --fix --no-cache **/*.{tsx,ts,jsx,js} --no-error-on-unmatched-pattern",
@@ -42,6 +61,7 @@
     "@types/react": "18",
     "@types/react-dom": "18",
     "@vitejs/plugin-react-swc": "3.5.0",
+    "autoprefixer": "^10.4.20",
     "eslint": "8.57.0",
     "eslint-plugin-react-hooks": "5.1.0-rc.0",
     "eslint-plugin-react-refresh": "0.4.9",
@@ -49,12 +69,15 @@
     "globals": "15.9.0",
     "husky": "9.1.5",
     "lint-staged": "15.2.9",
+    "postcss": "^8.4.44",
+    "postcss-cli": "^11.0.0",
     "prettier": "3.3.3",
     "prettier-plugin-tailwindcss": "0.6.6",
     "storybook": "8.2.9",
     "tailwindcss": "3.4.10",
     "typescript": "5",
     "typescript-eslint": "8.0.1",
-    "vite": "5.4.1"
+    "vite": "5.4.1",
+    "vite-plugin-dts": "^4.1.0"
   }
 }

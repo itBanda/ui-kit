@@ -1,16 +1,4 @@
-// import { ComponentPropsWithoutRef } from 'react'
-
-// type Props = ComponentPropsWithoutRef<'button'>
-
-// export function Button(props: Props) {
-//   return (
-//     <button className='mx-10 bg-slate-500' {...props} type='submit'>
-//       Hello Hello hello
-//     </button>
-//   )
-// }
-
-export interface ButtonProps {
+export type ButtonProps = {
   /**
    * What background color to use
    */
@@ -43,15 +31,25 @@ export const Button = ({
   size = 'medium',
   ...props
 }: ButtonProps) => {
-  const mode = primary
-    ? 'storybook-button--primary'
-    : 'storybook-button--secondary'
+  const sizeClasses = {
+    large: 'py-3 px-6 text-lg',
+    medium: 'py-2 px-4 text-base',
+    small: 'py-1 px-2 text-sm',
+  }
+
+  const baseClasses =
+    'font-bold rounded focus:outline-none focus:ring-2 focus:ring-offset-2'
+
+  const primaryClasses =
+    'bg-blue-500 text-white hover:bg-blue-700 focus:ring-blue-500'
+  const secondaryClasses =
+    'bg-gray-200 text-black hover:bg-gray-400 focus:ring-gray-500'
+
+  const mode = primary ? primaryClasses : secondaryClasses
 
   return (
     <button
-      className={['storybook-button', `storybook-button--${size}`, mode].join(
-        ' '
-      )}
+      className={`${baseClasses} ${sizeClasses[size]} ${mode}`}
       style={{ backgroundColor }}
       type='button'
       {...props}
