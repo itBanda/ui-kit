@@ -1,53 +1,44 @@
-import type { Meta, StoryObj } from '@storybook/react'
-
-import { fn } from '@storybook/test'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { Button } from './Button'
 
-// Конфигурация метаданных для Storybook
+// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  argTypes: {
-    backgroundColor: { control: 'color' }, // Настраиваемый цвет фона для кнопки
-  },
-  args: { onClick: fn() }, // Используем fn для отслеживания кликов, которые будут отображены в панели действий
   component: Button,
   parameters: {
-    layout: 'centered', // Центрируем компонент в Canvas
+    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
+    layout: 'centered',
   },
-  tags: ['autodocs'], // Автоматическая генерация документации
-  title: 'Example/Button', // Название истории в Storybook
+  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
+  tags: ['autodocs'],
 } satisfies Meta<typeof Button>
 
 export default meta
+
 type Story = StoryObj<typeof meta>
 
-// Пример сценария для Primary кнопки
+// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args: {
-    label: 'Button', // Текст на кнопке
-    primary: true, // Основной стиль
+    children: 'Primary Button',
+    variant: 'primary',
   },
 }
-
-// Пример сценария для Secondary кнопки
 export const Secondary: Story = {
   args: {
-    label: 'Button',
+    children: 'Secondary Button',
+    variant: 'secondary',
   },
 }
-
-// Пример сценария для Large кнопки
-export const Large: Story = {
+export const Outline: Story = {
   args: {
-    label: 'Button',
-    size: 'large', // Большой размер
+    children: 'Outline Button',
+    variant: 'outline',
   },
 }
-
-// Пример сценария для Small кнопки
-export const Small: Story = {
+export const Text: Story = {
   args: {
-    label: 'Buttondwdw',
-    size: 'small', // Маленький размер
+    children: 'Text Button',
+    variant: 'text',
   },
 }
