@@ -1,52 +1,29 @@
 import { Meta } from '@storybook/react'
 
 import { Input } from './Input'
+import { CommonOptions, Story } from './commonTypes'
 
 const meta: Meta<typeof Input> = {
   component: Input,
 }
 
 export default meta
-const commonOptions = {
+const commonOptions: CommonOptions = {
   label: 'search',
   placeholder: 'enter params',
   type: 'search',
 }
 
-export const Default = {
+export const Default: Story<typeof meta> = {
   args: {
     ...commonOptions,
-    variant: 'default',
+    disabled: false,
   },
 }
-export const Active = {
+export const Error: Story<typeof meta> = {
   args: {
     ...commonOptions,
-    variant: 'active',
-  },
-}
-export const Disabled = {
-  args: {
-    ...commonOptions,
-    variant: 'disabled',
-  },
-}
-export const Error = {
-  args: {
-    errorText: 'Error text',
-    ...commonOptions,
-    variant: 'error',
-  },
-}
-export const Focus = {
-  args: {
-    ...commonOptions,
-    variant: 'focus',
-  },
-}
-export const Hover = {
-  args: {
-    ...commonOptions,
-    variant: 'hover',
+    disabled: false,
+    errorText: 'Error message',
   },
 }
