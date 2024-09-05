@@ -52,10 +52,10 @@ export const Input = ({
     <>
       <label className='block text-sm'>{label}</label>
       <div
-        className={`relative ${positionIcon} inline-flex items-center text-gray-400 ${inputClasses}`}
+        className={`relative ${positionIcon} inline-flex items-center text-gray-400 ${inputClasses} focus-within:border-accent-500`}
       >
         <input
-          // className='px-2 py-1'
+          className='border-none bg-transparent text-light-100 focus:outline-none'
           disabled={variant === 'disabled'}
           placeholder={placeholder}
           type={currentType}
@@ -68,7 +68,7 @@ export const Input = ({
           {type === 'search' && <SearchIcon />}
         </div>
       </div>
-      <span className='text-danger-500'>{errorText}</span>
+      <span className='block text-sm text-danger-500'>{errorText}</span>
     </>
   )
 }

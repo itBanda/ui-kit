@@ -33,7 +33,7 @@ export const Disabled = {
 }
 export const Error = {
   args: {
-    errorText: 'some error',
+    errorText: 'Error text',
     ...commonOptions,
     variant: 'error',
   },
