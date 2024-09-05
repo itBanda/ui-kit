@@ -8,4 +8,7 @@
   html {
     font-family: 'Inter', system-ui;
   }
+  .custom-block-cursor {
+    cursor: url('./components/icon/assets/svgs/block.svg'), auto;
+  }
 }
