@@ -22,20 +22,18 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const CheckboxTemplate = (args: any) => {
-  const [checked, setChecked] = useState(args.checked)
-
-  const handleChange = () => {
-    setChecked(!checked)
-  }
-
-  return <Checkbox {...args} checked={checked} onChange={handleChange} />
+  return (
+    <div className='flex h-40 w-96 items-center justify-center bg-black'>
+      <Checkbox {...args} />
+    </div>
+  )
 }
 
 export const Default: Story = {
   args: {
     checked: true,
+    id: '123',
     label: 'Check-box',
-    onChange: () => {},
   },
   render: CheckboxTemplate,
 }
@@ -44,8 +42,8 @@ export const Disabled: Story = {
   args: {
     checked: true,
     disabled: true,
+    id: '123',
     label: 'Check-box',
-    onChange: () => {},
   },
   render: CheckboxTemplate,
 }
