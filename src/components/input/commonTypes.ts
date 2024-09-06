@@ -4,5 +4,3 @@ export type CommonOptions = {
   placeholder: string
   type: string
 }
-
-export type Story<MetaType> = StoryObj<MetaType>

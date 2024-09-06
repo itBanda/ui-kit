@@ -1,7 +1,7 @@
-import { Meta } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { Input } from './Input'
-import { CommonOptions, Story } from './commonTypes'
+import { CommonOptions } from './commonTypes'
 
 const meta: Meta<typeof Input> = {
   component: Input,
@@ -14,13 +14,15 @@ const commonOptions: CommonOptions = {
   type: 'text',
 }
 
-export const Default: Story<typeof meta> = {
+export const Default: StoryObj<typeof meta> = {
   args: {
+    disabled: false,
     ...commonOptions,
   },
 }
-export const Error: Story<typeof meta> = {
+export const Error: StoryObj<typeof meta> = {
   args: {
+    disabled: false,
     errorText: 'Error text',
     ...commonOptions,
   },

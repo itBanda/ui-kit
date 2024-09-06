@@ -5,28 +5,32 @@ import { Icon } from '../icon/Icon'
 
 export type InputProps = {
   errorText?: string
-  icon?: string
+  id?: string
   label?: string
+  value: string
 } & ComponentProps<'input'>
 
 export const Input = ({
   disabled,
   errorText,
-  icon,
+  id,
   label,
   placeholder,
   type,
+  ...props
 }: InputProps) => {
   const [currentType, setCurrentType] = useState(type)
-  const id = useId()
+
+  const myId = useId()
 
   const setVisibleHandler = () => {
-    if (type === 'password') {
+    if (type === 'password' && !disabled) {
       setCurrentType(currentType === 'password' ? 'text' : 'password')
     }
   }
 
-  const positionIcon = type === 'search' ? 'flex-row-reverse justify-end' : ''
+  const iconAlignment = type === 'search' ? 'flex-row-reverse justify-end' : ''
+  const iconColor = disabled ? 'text-dark-100' : 'text-light-100'
 
   return (
     <>
@@ -35,48 +39,44 @@ export const Input = ({
           {label}
         </label>
       )}
-      <div
-        className={cn(
-          'relative inline-flex h-9 items-center rounded-sm border border-dark-100 text-light-900',
-          'hover:border-light-900',
-          'active:border-light-100',
-          'active:text-light-100',
-          'focus-within:border-accent-500',
-          `${positionIcon}`,
-          `${disabled && 'text-dark-100'}`,
-          `${errorText && 'border-danger-500'}`
-        )}
-      >
+      <div className={cn('relative h-9 max-w-[280px]', `${iconAlignment}`)}>
         <input
+          autoComplete='off' // for disabled dropdown list
           className={cn(
-            'm-1 w-60 border-none bg-transparent text-light-900',
-            'active:text-light-100',
-            'focus:bg-transparent focus:outline-none',
-            'disabled:cursor-not-allowed',
-            // 'disabled:custom-block-cursor',
-            `${errorText && 'text-light-100'}`,
-            `${disabled && 'text-dark-100'}`
+            'h-full w-full rounded-sm border border-dark-100 bg-transparent p-2 text-light-900 outline-none',
+            `${errorText && 'border-danger-500'}`,
+            `focus:text-light-100`,
+            'focus:border-accent-500',
+            'disabled:cursor-not-allowed disabled:border-dark-100',
+            `hover:border-light-900`,
+            `${errorText && 'hover:border-danger-500 focus:border-danger-500'}`,
+            'disabled:text-dark-100 disabled:placeholder-dark-100',
+            !errorText &&
+              'enabled:focus:[box-shadow:inset_0_0_0_0.5px_#397df6,0_0_0_0.5px_#397df6]',
+            'focus:bg-transparent'
           )}
           disabled={disabled}
-          id={id}
+          id={id ?? myId}
           placeholder={placeholder}
           type={currentType}
-        ></input>
-        <div className='m-1' onClick={setVisibleHandler}>
+          value={props.value}
+        />
+        <div
+          className={`absolute right-1 top-[2px] m-1 ${disabled ? '-z-10' : ''}`}
+          onClick={setVisibleHandler}
+        >
           {type === 'password' && currentType === 'password' && (
-            <Icon color='light-100' icon='eye-off-outline' />
+            <Icon className={iconColor} icon='eye-off-outline' />
           )}
           {type === 'password' && currentType === 'text' && (
-            <Icon color='light-100' icon='eye-outline' />
+            <Icon className={iconColor} icon='eye-outline' />
           )}
           {type === 'search' && (
-            <Icon color='light-100' icon='search-outline' />
+            <Icon className={iconColor} icon='search-outline' />
           )}
         </div>
       </div>
-      {errorText && (
-        <span className='block text-sm text-danger-500'>{errorText}</span>
-      )}
+      {errorText && <p className='text-sm text-danger-500'>{errorText}</p>}
     </>
   )
 }
