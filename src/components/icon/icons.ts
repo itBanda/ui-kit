@@ -1,125 +1,67 @@
 import { lazy } from 'react'
 
-export const icons = {
-  'arrow-back-outline': lazy(
-    () => import('./assets/svgs/arrow-back-outline.svg?react')
-  ),
-  'arrow-down-outline': lazy(
-    () => import('./assets/svgs/arrow-down-outline.svg?react')
-  ),
-  'arrow-forward-outline': lazy(
-    () => import('./assets/svgs/arrow-forward-outline.svg?react')
-  ),
-  'arrow-ios-back-outline': lazy(
-    () => import('./assets/svgs/arrow-ios-back-outline.svg?react')
-  ),
-  'arrow-ios-forward-outline': lazy(
-    () => import('./assets/svgs/arrow-ios-forward-outline.svg?react')
-  ),
-  'arrow-up': lazy(() => import('./assets/svgs/arrow-up.svg?react')),
-  block: lazy(() => import('./assets/svgs/block.svg?react')),
-  bookmark: lazy(() => import('./assets/svgs/bookmark.svg?react')),
-  'bookmark-outline': lazy(
-    () => import('./assets/svgs/bookmark-outline.svg?react')
-  ),
-  calendar: lazy(() => import('./assets/svgs/calendar.svg?react')),
-  'calendar-outline': lazy(
-    () => import('./assets/svgs/calendar-outline.svg?react')
-  ),
-  'checkmark-outline': lazy(
-    () => import('./assets/svgs/checkmark-outline.svg?react')
-  ),
-  'close-outline': lazy(() => import('./assets/svgs/close-outline.svg?react')),
-  'color-palette-outline': lazy(
-    () => import('./assets/svgs/color-palette-outline.svg?react')
-  ),
-  'done-all-outline': lazy(
-    () => import('./assets/svgs/done-all-outline.svg?react')
-  ),
-  'expand-outline': lazy(
-    () => import('./assets/svgs/expand-outline.svg?react')
-  ),
-  eye: lazy(() => import('./assets/svgs/eye.svg?react')),
-  'eye-off': lazy(() => import('./assets/svgs/eye-off.svg?react')),
-  'eye-off-outline': lazy(
-    () => import('./assets/svgs/eye-off-outline.svg?react')
-  ),
-  'eye-outline': lazy(() => import('./assets/svgs/eye-outline.svg?react')),
-  facebook: lazy(() => import('./assets/svgs/facebook.svg?react')),
-  'fill-bell': lazy(() => import('./assets/svgs/fill-bell.svg?react')),
-  github: lazy(() => import('./assets/svgs/github.svg?react')),
-  google: lazy(() => import('./assets/svgs/google.svg?react')),
-  home: lazy(() => import('./assets/svgs/home.svg?react')),
-  'home-outline': lazy(() => import('./assets/svgs/home-outline.svg?react')),
-  image: lazy(() => import('./assets/svgs/image.svg?react')),
-  'image-outline': lazy(() => import('./assets/svgs/image-outline.svg?react')),
-  layers: lazy(() => import('./assets/svgs/layers.svg?react')),
-  'layers-outline': lazy(
-    () => import('./assets/svgs/layers-outline.svg?react')
-  ),
-  'log-out-outline': lazy(
-    () => import('./assets/svgs/log-out-outline.svg?react')
-  ),
-  'menu-outline': lazy(() => import('./assets/svgs/menu-outline.svg?react')),
-  'message-circle': lazy(
-    () => import('./assets/svgs/message-circle.svg?react')
-  ),
-  'message-circle-outline': lazy(
-    () => import('./assets/svgs/message-circle-outline.svg?react')
-  ),
-  mic: lazy(() => import('./assets/svgs/mic.svg?react')),
-  'mic-outline': lazy(() => import('./assets/svgs/mic-outline.svg?react')),
-  'more-horizontal-outline': lazy(
-    () => import('./assets/svgs/more-horizontal-outline.svg?react')
-  ),
-  'outline-bell': lazy(() => import('./assets/svgs/outline-bell.svg?react')),
-  'paper-plane-outline': lazy(
-    () => import('./assets/svgs/paper-plane-outline.svg?react')
-  ),
-  'pause-circle': lazy(() => import('./assets/svgs/pause-circle.svg?react')),
-  'pause-circle-outline': lazy(
-    () => import('./assets/svgs/pause-circle-outline.svg?react')
-  ),
-  person: lazy(() => import('./assets/svgs/person.svg?react')),
-  'person-add': lazy(() => import('./assets/svgs/person-add.svg?react')),
-  'person-add-outline': lazy(
-    () => import('./assets/svgs/person-add-outline.svg?react')
-  ),
-  'person-outline': lazy(
-    () => import('./assets/svgs/person-outline.svg?react')
-  ),
-  'person-remove': lazy(() => import('./assets/svgs/person-remove.svg?react')),
-  'person-remove-outline': lazy(
-    () => import('./assets/svgs/person-remove-outline.svg?react')
-  ),
-  'play-circle': lazy(() => import('./assets/svgs/play-circle.svg?react')),
-  'play-circle-outline': lazy(
-    () => import('./assets/svgs/play-circle-outline.svg?react')
-  ),
-  'plus-circle': lazy(() => import('./assets/svgs/plus-circle.svg?react')),
+const loadIcon = (icon: string) =>
+  lazy(() => import(`./assets/svgs/${icon}.svg?react`))
 
-  'plus-circle-outline': lazy(
-    () => import('./assets/svgs/plus-circle-outline.svg?react')
-  ),
-  'plus-square': lazy(() => import('./assets/svgs/plus-square.svg?react')),
-  'plus-square-outline': lazy(
-    () => import('./assets/svgs/plus-square-outline.svg?react')
-  ),
-  'radio-button-checked': lazy(
-    () => import('./assets/svgs/radio-button-checked.svg?react')
-  ),
-  'radio-button-unchecked': lazy(
-    () => import('./assets/svgs/radio-button-unchecked.svg?react')
-  ),
-  recaptcha: lazy(() => import('./assets/svgs/recaptcha.svg?react')),
-  'search-outline': lazy(
-    () => import('./assets/svgs/search-outline.svg?react')
-  ),
-  settings: lazy(() => import('./assets/svgs/settings.svg?react')),
-  'settings-outline': lazy(
-    () => import('./assets/svgs/settings-outline.svg?react')
-  ),
-  'trending-up-outline': lazy(
-    () => import('./assets/svgs/trending-up-outline.svg?react')
-  ),
+export const icons = {
+  'arrow-back-outline': loadIcon('arrow-back-outline'),
+  'arrow-down-outline': loadIcon('arrow-down-outline'),
+  'arrow-forward-outline': loadIcon('arrow-forward-outline'),
+  'arrow-ios-back-outline': loadIcon('arrow-ios-back-outline'),
+  'arrow-ios-forward-outline': loadIcon('arrow-ios-forward-outline'),
+  'arrow-up': loadIcon('arrow-up'),
+  block: loadIcon('block'),
+  bookmark: loadIcon('bookmark'),
+  'bookmark-outline': loadIcon('bookmark-outline'),
+  calendar: loadIcon('calendar'),
+  'calendar-outline': loadIcon('calendar-outline'),
+  'checkmark-outline': loadIcon('checkmark-outline'),
+  'close-outline': loadIcon('close-outline'),
+  'color-palette-outline': loadIcon('color-palette-outline'),
+  'done-all-outline': loadIcon('done-all-outline'),
+  'expand-outline': loadIcon('expand-outline'),
+  eye: loadIcon('eye'),
+  'eye-off': loadIcon('eye-off'),
+  'eye-off-outline': loadIcon('eye-off-outline'),
+  'eye-outline': loadIcon('eye-outline'),
+  facebook: loadIcon('facebook'),
+  'fill-bell': loadIcon('fill-bell'),
+  github: loadIcon('github'),
+  google: loadIcon('google'),
+  home: loadIcon('home'),
+  'home-outline': loadIcon('home-outline'),
+  image: loadIcon('image'),
+  'image-outline': loadIcon('image-outline'),
+  layers: loadIcon('layers'),
+  'layers-outline': loadIcon('layers-outline'),
+  'log-out-outline': loadIcon('log-out-outline'),
+  'menu-outline': loadIcon('menu-outline'),
+  'message-circle': loadIcon('message-circle'),
+  'message-circle-outline': loadIcon('message-circle-outline'),
+  mic: loadIcon('mic'),
+  'mic-outline': loadIcon('mic-outline'),
+  'more-horizontal-outline': loadIcon('more-horizontal-outline'),
+  'outline-bell': loadIcon('outline-bell'),
+  'paper-plane-outline': loadIcon('paper-plane-outline'),
+  'pause-circle': loadIcon('pause-circle'),
+  'pause-circle-outline': loadIcon('pause-circle-outline'),
+  person: loadIcon('person'),
+  'person-add': loadIcon('person-add'),
+  'person-add-outline': loadIcon('person-add-outline'),
+  'person-outline': loadIcon('person-outline'),
+  'person-remove': loadIcon('person-remove'),
+  'person-remove-outline': loadIcon('person-remove-outline'),
+  'play-circle': loadIcon('play-circle'),
+  'play-circle-outline': loadIcon('play-circle-outline'),
+  'plus-circle': loadIcon('plus-circle'),
+  'plus-circle-outline': loadIcon('plus-circle-outline'),
+  'plus-square': loadIcon('plus-square'),
+  'plus-square-outline': loadIcon('plus-square-outline'),
+  'radio-button-checked': loadIcon('radio-button-checked'),
+  'radio-button-unchecked': loadIcon('radio-button-unchecked'),
+  recaptcha: loadIcon('recaptcha'),
+  'search-outline': loadIcon('search-outline'),
+  settings: loadIcon('settings'),
+  'settings-outline': loadIcon('settings-outline'),
+  'trending-up-outline': loadIcon('trending-up-outline'),
 }
