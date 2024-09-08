@@ -1,82 +1,83 @@
-import { ComponentProps, useId, useState } from 'react'
+import { forwardRef, useId } from 'react'
 
-import { cn } from '../../utils/cn'
-import { Icon } from '../icon/Icon'
+import { cn } from '../../utils'
+import { InputProps } from './types/inputTypes'
 
-export type InputProps = {
-  errorText?: string
-  id?: string
-  label?: string
-  value: string
-} & ComponentProps<'input'>
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  (
+    { className, disabled, errorText, iconEnd, iconStart, id, label, ...props },
+    ref
+  ) => {
+    const commonStyleIcon = disabled ? 'text-dark-100' : 'text-light-100'
+    const myId = useId()
 
-export const Input = ({
-  disabled,
-  errorText,
-  id,
-  label,
-  placeholder,
-  type,
-  ...props
-}: InputProps) => {
-  const [currentType, setCurrentType] = useState(type)
-
-  const myId = useId()
-
-  const setVisibleHandler = () => {
-    if (type === 'password' && !disabled) {
-      setCurrentType(currentType === 'password' ? 'text' : 'password')
-    }
-  }
-
-  const iconAlignment = type === 'search' ? 'flex-row-reverse justify-end' : ''
-  const iconColor = disabled ? 'text-dark-100' : 'text-light-100'
-
-  return (
-    <>
-      {label && (
-        <label className='block text-sm text-light-900' htmlFor={id}>
-          {label}
-        </label>
-      )}
-      <div className={cn('relative h-9 max-w-[280px]', `${iconAlignment}`)}>
-        <input
-          autoComplete='off' // for disabled dropdown list
-          className={cn(
-            'h-full w-full rounded-sm border border-dark-100 bg-transparent p-2 text-light-900 outline-none',
-            `${errorText && 'border-danger-500'}`,
-            `focus:text-light-100`,
-            'focus:border-accent-500',
-            'disabled:cursor-not-allowed disabled:border-dark-100',
-            `hover:border-light-900`,
-            `${errorText && 'hover:border-danger-500 focus:border-danger-500'}`,
-            'disabled:text-dark-100 disabled:placeholder-dark-100',
-            !errorText &&
-              'enabled:focus:[box-shadow:inset_0_0_0_0.5px_#397df6,0_0_0_0.5px_#397df6]',
-            'focus:bg-transparent'
-          )}
-          disabled={disabled}
-          id={id ?? myId}
-          placeholder={placeholder}
-          type={currentType}
-          value={props.value}
-        />
+    return (
+      <div className='flex flex-col'>
+        {label && (
+          <label
+            className={cn('text-sm text-light-900', {
+              'text-dark-100': disabled,
+            })}
+          >
+            {label}
+          </label>
+        )}
         <div
-          className={`absolute right-1 top-[2px] m-1 ${disabled ? '-z-10' : ''}`}
-          onClick={setVisibleHandler}
+          className={cn('relative max-w-[280px]', {
+            'cursor-not-allowed': disabled,
+          })}
         >
-          {type === 'password' && currentType === 'password' && (
-            <Icon className={iconColor} icon='eye-off-outline' />
+          {iconStart && (
+            <div
+              className={cn(
+                'absolute left-3 top-1/2 -translate-y-1/2',
+                {
+                  'pointer-events-none': disabled,
+                },
+                commonStyleIcon
+              )}
+            >
+              {iconStart}
+            </div>
           )}
-          {type === 'password' && currentType === 'text' && (
-            <Icon className={iconColor} icon='eye-outline' />
-          )}
-          {type === 'search' && (
-            <Icon className={iconColor} icon='search-outline' />
+          <input
+            disabled={disabled}
+            id={id ?? myId}
+            ref={ref}
+            {...props}
+            className={cn(
+              'w-full rounded-sm border border-dark-100 bg-transparent px-3 py-[6px] text-base text-light-100 transition placeholder:text-light-900',
+              'enabled:focus:hover:border-transparent',
+              'disabled:cursor-not-allowed disabled:text-dark-100 disabled:placeholder:text-dark-100',
+              'focus:border-transparent focus:outline-none focus:ring-1 focus:ring-accent-500',
+              { 'pr-10': iconEnd },
+              { 'pl-10': iconStart },
+              {
+                'border-danger-500 focus:border-danger-500 focus:ring-0 enabled:focus:hover:border-danger-500':
+                  errorText,
+              },
+              { 'enabled:hover:border-light-900': !errorText },
+              { 'border-dark-100': disabled },
+              className
+            )}
+          />
+          {iconEnd && (
+            <div
+              className={cn(
+                `absolute right-3 top-1/2 -translate-y-1/2`,
+                {
+                  'pointer-events-none': disabled,
+                },
+                commonStyleIcon
+              )}
+            >
+              {iconEnd}
+            </div>
           )}
         </div>
+        {errorText && <p className='text-sm text-danger-500'>{errorText}</p>}
       </div>
-      {errorText && <p className='text-sm text-danger-500'>{errorText}</p>}
-    </>
-  )
-}
+    )
+  }
+)
+Input.displayName = 'Input'
