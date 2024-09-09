@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { useState } from 'react'
-
 import { Checkbox } from './Checkbox'
 
 const meta = {
@@ -40,7 +38,7 @@ export const Default: Story = {
 
 export const Disabled: Story = {
   args: {
-    checked: true,
+    checked: false,
     disabled: true,
     id: '123',
     label: 'Check-box',

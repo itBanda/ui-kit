@@ -1,21 +1,19 @@
-import { useState } from 'react'
+import { DetailedHTMLProps, InputHTMLAttributes, useState } from 'react'
 
-import s from './Checkbox.module.css'
-
-export type CheckboxProps = {
-  checked?: boolean
-  disabled?: boolean
+type DefaultCheckboxProps = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>
+type CheckboxProps = {
   id: string
   label?: string
-  onChange?: () => void
-}
+} & DefaultCheckboxProps
 
 export const Checkbox = ({
   checked = false,
   disabled = false,
   id,
   label,
-  onChange,
 }: CheckboxProps) => {
   const [isChecked, setIsChecked] = useState(checked)
 
@@ -27,21 +25,33 @@ export const Checkbox = ({
 
   return (
     <label
-      className={`${s.checkboxContainer} ${disabled ? s.disabled : ''}`}
+      className={`relative flex items-center gap-0.5 ${disabled ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'} group`}
       id={id}
     >
-      <div className={s.shadow}>
+      <div
+        className={`relative h-10 w-10 rounded-full transition-colors duration-200 ${disabled ? 'cursor-not-allowed' : 'group-focus-within:bg-dark-500 group-hover:bg-dark-300 group-active:bg-dark-100'}`}
+      >
         <input
           checked={isChecked}
-          className={s.checkboxInput}
+          className='absolute h-full w-full cursor-pointer opacity-0'
           disabled={disabled}
-          onChange={onChange || handleCheckboxChange}
+          onChange={handleCheckboxChange}
           type='checkbox'
         />
-        <span className={`${s.checkbox} ${isChecked ? s.checked : ''}`}></span>{' '}
+        <span
+          className={`absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 transform rounded-sm border-2 border-[#EDF3FA] bg-black transition-all duration-200 ${isChecked ? 'border-white bg-white' : ''}`}
+        >
+          {isChecked && (
+            <img
+              alt='checked'
+              className='h-full w-full'
+              src='https://cdn-icons-png.flaticon.com/512/60/60731.png'
+            />
+          )}
+        </span>
       </div>
       {label && (
-        <span className={`${s.checkboxLabel} ${disabled ? s.disabled : ''}`}>
+        <span className={`text-white ${disabled ? 'cursor-not-allowed' : ''}`}>
           {label}
         </span>
       )}
