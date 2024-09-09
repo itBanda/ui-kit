@@ -1,60 +1,80 @@
-export type ButtonProps = {
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string
-  /**
-   * Button contents
-   */
-  label: string
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean
-  /**
-   * How large should the button be?
-   */
-  size?: 'large' | 'medium' | 'small'
-}
+import { ComponentProps } from 'react'
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({
-  backgroundColor,
-  label,
-  primary = false,
-  size = 'medium',
-  ...props
-}: ButtonProps) => {
-  const sizeClasses = {
-    large: 'py-3 px-6 text-lg',
-    medium: 'py-2 px-4 text-base',
-    small: 'py-1 px-2 text-sm',
+import { VariantProps, cva } from 'class-variance-authority'
+import { twMerge } from 'tailwind-merge'
+
+import { cn } from '../../utils'
+
+const buttonVariants = cva(
+  ['text-white text-base font-semibold py-1.5 px-6 rounded-sm'],
+  {
+    compoundVariants: [
+      {
+        class: 'text-accent-900 opacity-50 border-accent-700',
+        disabled: true,
+        variant: 'outlined',
+      },
+      {
+        class: 'bg-accent-900 text-light-900 opacity-50',
+        disabled: true,
+        variant: 'primary',
+      },
+      {
+        class: 'bg-dark-500  text-light-900 opacity-50',
+        disabled: true,
+        variant: 'secondary',
+      },
+      {
+        class: 'text-accent-900 opacity-50',
+        disabled: true,
+        variant: 'text',
+      },
+    ],
+    defaultVariants: {
+      disabled: false,
+      variant: 'primary',
+    },
+    variants: {
+      disabled: {
+        false: '',
+        true: 'cursor-not-allowed',
+      },
+      variant: {
+        outlined: [
+          'bg-transparent text-accent-500 border border-accent-500',
+          'hover:border-accent-100 hover:text-accent-100 active:text-accent-700 active:border-accent-700',
+        ],
+        primary: [
+          'bg-accent-500',
+          'hover:bg-accent-100 active:bg-accent-700 active: text-light-500',
+        ],
+        secondary: [
+          'bg-dark-300',
+          'hover:bg-dark-100 active:bg-dark-500  focus:outline-accent-500',
+        ],
+        text: [
+          'text-accent-500',
+          'hover:text-accent-100 active:text-accent-700 focus:outline-accent-500',
+        ],
+      },
+    },
   }
+)
 
-  const baseClasses =
-    'font-bold rounded focus:outline-none focus:ring-2 focus:ring-offset-2'
+export type Props = ComponentProps<'button'> &
+  VariantProps<typeof buttonVariants>
 
-  const primaryClasses =
-    'bg-blue-500 text-white hover:bg-blue-700 focus:ring-blue-500'
-  const secondaryClasses =
-    'bg-gray-200 text-black hover:bg-gray-400 focus:ring-gray-500'
-
-  const mode = primary ? primaryClasses : secondaryClasses
-
+export const Button = ({
+  className,
+  disabled = false,
+  variant,
+  ...props
+}: Props) => {
   return (
     <button
-      className={`${baseClasses} ${sizeClasses[size]} ${mode}`}
-      style={{ backgroundColor }}
-      type='button'
+      className={twMerge(cn(buttonVariants({ disabled, variant }), className))}
+      disabled={disabled}
       {...props}
-    >
-      {label}
-    </button>
+    />
   )
 }
