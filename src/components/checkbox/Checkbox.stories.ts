@@ -7,7 +7,6 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  title: 'Components/Checkbox',
 } satisfies Meta<typeof Checkbox>
 
 export default meta
