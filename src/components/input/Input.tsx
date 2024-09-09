@@ -2,14 +2,24 @@ import { forwardRef, useId } from 'react'
 
 import { cn } from '../../utils'
 import { InputProps } from './types'
+import { useGetId } from './useGetId'
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { className, disabled, errorText, iconEnd, iconStart, id, label, ...props },
+    {
+      className,
+      disabled,
+      errorText,
+      iconEnd,
+      iconStart,
+      id: propsId,
+      label,
+      ...props
+    },
     ref
   ) => {
     const commonStyleIcon = disabled ? 'text-dark-100' : 'text-light-100'
-    const myId = useId()
+    const id = useGetId(propsId)
 
     return (
       <div className='flex flex-col'>
@@ -58,7 +68,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               className
             )}
             disabled={disabled}
-            id={id ?? myId}
+            id={id}
             ref={ref}
             {...props}
           />
