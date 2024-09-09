@@ -16,7 +16,7 @@ type Props = {
 
 export const Icon = ({
   className,
-  color = 'black',
+  color = 'inherit',
   cursor = 'auto',
   height = 24,
   icon,
