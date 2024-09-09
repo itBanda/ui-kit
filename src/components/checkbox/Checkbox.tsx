@@ -1,15 +1,11 @@
-import { DetailedHTMLProps, InputHTMLAttributes, useState } from 'react'
+import { ComponentProps, useState } from 'react'
 
 import { Icon } from '../icon/Icon'
 
-type DefaultCheckboxProps = DetailedHTMLProps<
-  InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->
 type CheckboxProps = {
   id: string
   label?: string
-} & DefaultCheckboxProps
+} & ComponentProps<'input'>
 
 export const Checkbox = ({ checked, disabled, id, label }: CheckboxProps) => {
   const [isChecked, setIsChecked] = useState(checked)
