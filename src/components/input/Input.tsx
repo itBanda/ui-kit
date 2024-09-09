@@ -1,7 +1,7 @@
 import { forwardRef, useId } from 'react'
 
 import { cn } from '../../utils'
-import { InputProps } from './types/inputTypes'
+import { InputProps } from './types'
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
@@ -18,6 +18,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             className={cn('text-sm text-light-900', {
               'text-dark-100': disabled,
             })}
+            htmlFor={id}
           >
             {label}
           </label>
@@ -41,10 +42,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             </div>
           )}
           <input
-            disabled={disabled}
-            id={id ?? myId}
-            ref={ref}
-            {...props}
             className={cn(
               'w-full rounded-sm border border-dark-100 bg-transparent px-3 py-[6px] text-base text-light-100 transition placeholder:text-light-900',
               'enabled:focus:hover:border-transparent',
@@ -60,6 +57,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               { 'border-dark-100': disabled },
               className
             )}
+            disabled={disabled}
+            id={id ?? myId}
+            ref={ref}
+            {...props}
           />
           {iconEnd && (
             <div
