@@ -3,6 +3,7 @@ import { join, resolve } from 'node:path'
 import react from '@vitejs/plugin-react-swc'
 import tailwindcss from 'tailwindcss'
 import { defineConfig } from 'vite'
+import svgr from 'vite-plugin-svgr'
 
 import { dependencies, devDependencies } from './package.json'
 
@@ -36,5 +37,5 @@ export default defineConfig({
       plugins: [tailwindcss()],
     },
   },
-  plugins: [react()],
+  plugins: [react(), svgr()],
 })
