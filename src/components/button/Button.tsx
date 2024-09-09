@@ -25,7 +25,7 @@ const buttonVariants = cva(
         variant: 'secondary',
       },
       {
-        class: 'text-accent-900 opacity-50',
+        class: 'text-accent-900 opacity-50 ',
         disabled: true,
         variant: 'text',
       },
@@ -42,19 +42,19 @@ const buttonVariants = cva(
       variant: {
         outlined: [
           'bg-transparent text-accent-500 border border-accent-500',
-          'hover:border-accent-100 hover:text-accent-100 active:text-accent-700 active:border-accent-700',
+          ' enabled:hover:border-accent-100 enabled:hover:text-accent-100 active:text-accent-700 active:border-accent-700',
         ],
         primary: [
           'bg-accent-500',
-          'hover:bg-accent-100 active:bg-accent-700 active: text-light-500',
+          ' enabled:hover:bg-accent-100 active:bg-accent-700 active: text-light-500',
         ],
         secondary: [
           'bg-dark-300',
-          'hover:bg-dark-100 active:bg-dark-500  focus:outline-accent-500',
+          ' enabled:hover:bg-dark-100 active:bg-dark-500  focus:outline-accent-500',
         ],
         text: [
           'text-accent-500',
-          'hover:text-accent-100 active:text-accent-700 focus:outline-accent-500',
+          ' enabled:hover:text-accent-100 active:text-accent-700 focus:outline-accent-500',
         ],
       },
     },
