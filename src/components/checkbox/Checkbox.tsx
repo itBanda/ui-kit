@@ -1,6 +1,7 @@
-import { ComponentProps, forwardRef, useId } from 'react'
+import { ComponentProps, forwardRef } from 'react'
 
-import { cn } from '../../../src/utils'
+import { useGetId } from '../../hooks/useGetId'
+import { cn } from '../../utils/cn'
 import { Icon } from '../icon/Icon'
 
 type CheckboxProps = {
@@ -8,9 +9,8 @@ type CheckboxProps = {
 } & ComponentProps<'input'>
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ disabled, label, ...props }, ref) => {
-    const uniqueId = useId()
-    const checkboxId = props.id || uniqueId
+  ({ checked, disabled, label, ...props }, ref) => {
+    const id = useGetId(props.id)
 
     return (
       <div className={cn('group flex items-center gap-0.5')}>
@@ -24,11 +24,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           )}
         >
           <input
+            checked={checked}
             className={cn(
               'peer h-full w-full cursor-pointer opacity-0 disabled:cursor-not-allowed'
             )}
             disabled={disabled}
-            id={checkboxId}
+            id={id}
             ref={ref}
             type='checkbox'
             {...props}
@@ -36,10 +37,14 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
           <span
             className={cn(
-              'absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-sm border-2 border-light-500 bg-black transition-all duration-200 peer-checked:bg-light-100 peer-disabled:cursor-not-allowed peer-disabled:border-none peer-disabled:bg-dark-100 peer-disabled:text-light-700'
+              'absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-sm border-2 bg-transparent transition-all duration-100 peer-checked:bg-light-100 peer-disabled:cursor-not-allowed peer-disabled:border-dark-100 peer-disabled:bg-dark-100 peer-disabled:text-light-700',
+              {
+                'peer-disabled:border-light-900 peer-disabled:bg-transparent':
+                  !checked && disabled,
+              }
             )}
           >
-            {props.checked && (
+            {checked && (
               <Icon
                 className={cn(
                   'absolute left-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 cursor-pointer',
@@ -57,7 +62,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             className={cn('cursor-pointer text-sm font-normal text-white', {
               'cursor-not-allowed text-light-900': disabled,
             })}
-            htmlFor={checkboxId}
+            htmlFor={id}
           >
             {label}
           </label>
