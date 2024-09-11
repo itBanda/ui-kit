@@ -11,7 +11,7 @@ const buttonVariants = cva(
   {
     compoundVariants: [
       {
-        class: 'text-accent-900 border-accent-700',
+        class: 'text-accent-900 border-accent-900',
         disabled: true,
         variant: 'outlined',
       },
