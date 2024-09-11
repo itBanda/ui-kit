@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { PasswordInput } from './PasswordInput'
 const meta = {
   component: PasswordInput,
-  title: 'Input',
+  title: 'Components/Input',
 } satisfies Meta<typeof PasswordInput>
 
 export default meta

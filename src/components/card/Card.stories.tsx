@@ -4,7 +4,7 @@ import { Card } from './Card'
 
 const meta = {
   component: Card,
-  title: 'Card',
+  title: 'Components/Card',
 } satisfies Meta<typeof Card>
 
 export default meta
