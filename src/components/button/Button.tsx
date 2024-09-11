@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react'
+import { ComponentProps, forwardRef } from 'react'
 
 import { VariantProps, cva } from 'class-variance-authority'
 
@@ -64,12 +64,17 @@ const buttonVariants = cva(
 
 type Props = ComponentProps<'button'> & VariantProps<typeof buttonVariants>
 
-export const Button = ({ className, disabled, variant, ...props }: Props) => {
-  return (
-    <button
-      className={cn(buttonVariants({ disabled, variant }), className)}
-      disabled={disabled}
-      {...props}
-    />
-  )
-}
+export const Button = forwardRef<HTMLButtonElement, Props>(
+  ({ className, disabled, variant, ...props }, ref) => {
+    return (
+      <button
+        className={cn(buttonVariants({ disabled, variant }), className)}
+        disabled={disabled}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+
+Button.displayName = 'Button'
