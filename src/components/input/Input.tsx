@@ -1,8 +1,8 @@
 import { forwardRef, useId } from 'react'
 
+import { useGetId } from '../../hooks/useGetId'
 import { cn } from '../../utils'
 import { InputProps } from './types'
-import { useGetId } from './useGetId'
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
