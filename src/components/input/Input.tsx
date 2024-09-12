@@ -1,4 +1,4 @@
-import { forwardRef, useId } from 'react'
+import { forwardRef } from 'react'
 
 import { useGetId } from '../../hooks/useGetId'
 import { cn } from '../../utils'
