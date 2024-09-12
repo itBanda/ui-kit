@@ -55,7 +55,7 @@ const buttonVariants = cva(
         ],
         text: [
           'text-accent-500',
-          'enabled:hover:text-accent-100 enabled:active:text-accent-700 focus:outline-none focus:ring-2 focus:ring-accent-100 focus:outline-none focus:ring-2 focus:ring-accent-700 ',
+          'enabled:hover:text-accent-100 enabled:active:text-accent-700 focus:outline-none focus:ring-2 focus:ring-accent-700 ',
         ],
       },
     },

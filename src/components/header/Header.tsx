@@ -6,13 +6,12 @@ import Typography from '../typography/Typography'
 
 type Props = {
   isLoggedIn: boolean
-  language?: ReactNode
 }
 
-export const Header = ({ isLoggedIn, language }: Props) => {
+export const Header = ({ isLoggedIn }: Props) => {
   return (
     <div className='flex w-full justify-center bg-dark-700'>
-      <div className='flex w-[1280px] place-content-between space-x-0 border-b border-dark-300 bg-transparent px-16 py-3'>
+      <div className='flex w-[1280px] place-content-between border-b border-dark-300 bg-transparent px-16 py-3'>
         <Typography.TextSemiboldXl className='font-inter text-light-100'>
           Inctagram
         </Typography.TextSemiboldXl>
@@ -24,11 +23,11 @@ export const Header = ({ isLoggedIn, language }: Props) => {
 
 export const LoggedInHeader = () => {
   return (
-    <div className='flex space-x-6'>
+    <div className='flex items-center space-x-6'>
       <Icon color='white' icon='outline-bell' />
-      <select id='' name=''>
-        <option value='wddw'>eng</option>
-        <option value='dwwd'>ru</option>
+      <select className='' id='' name=''>
+        <option value='wddw'>english</option>
+        <option value='dwwd'>russia</option>
       </select>
     </div>
   )
@@ -36,13 +35,25 @@ export const LoggedInHeader = () => {
 
 export const PublicHeader = () => {
   return (
-    <div className='flex space-x-6'>
+    <div className='flex items-center space-x-6'>
       <select id='' name='wddw'>
-        <option value='wddw'>eng</option>
-        <option value='dwwd'>ru</option>
+        <option value='wddw'>english</option>
+        <option value='dwwd'>russia</option>
       </select>
-      <Button variant='text'>Log In</Button>
-      <Button variant='primary'>Sign up</Button>
+      <AuthenticationButtons />
+    </div>
+  )
+}
+
+export const AuthenticationButtons = () => {
+  return (
+    <div className=''>
+      <Button className='ml-6' variant='text'>
+        Log In
+      </Button>
+      <Button className='ml-6' variant='primary'>
+        Sign up
+      </Button>
     </div>
   )
 }
