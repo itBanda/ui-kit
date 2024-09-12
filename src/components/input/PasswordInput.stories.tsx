@@ -12,5 +12,6 @@ export const Password: StoryObj<typeof meta> = {
   args: {
     disabled: true,
     errorText: 'Error text',
+    width: 280,
   },
 }

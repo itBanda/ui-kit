@@ -19,5 +19,6 @@ export const Default: StoryObj<typeof meta> = {
     //   <Icon cursor='pointer' height={20} icon='search-outline' width={20} />
     // ), // not deleted
     placeholder: 'enter text',
+    width: 280,
   },
 }
