@@ -14,6 +14,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       iconStart,
       id: propsId,
       label,
+      width,
       ...props
     },
     ref
@@ -34,9 +35,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
         <div
-          className={cn('relative max-w-[280px]', {
+          className={cn('relative w-full', {
             'cursor-not-allowed': disabled,
           })}
+          style={{ maxWidth: `${width}px` }}
         >
           {iconStart && (
             <div
