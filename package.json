@@ -1,7 +1,7 @@
 {
   "name": "uikit-inctagram",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
   "module": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
