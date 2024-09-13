@@ -26,7 +26,7 @@ export const Public: StoryObj<typeof meta> = {
 }
 export const LoggedIn: StoryObj<typeof meta> = {
   args: {
-    children: <LoggedInHeader notificationsCount={4} />,
+    children: <LoggedInHeader notificationsCount={2} />,
     logo: (
       <Typography.TextSemiboldXl className='text-light-100'>
         <a href='some path'>Inctagram</a>
