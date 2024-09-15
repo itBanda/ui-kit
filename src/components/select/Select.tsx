@@ -7,7 +7,10 @@ import { Props } from './types'
 import { useSelect } from './useSelect'
 
 export const Select = forwardRef<HTMLButtonElement, Props>(
-  ({ disabled, id: propsId, label, options, width }, ref) => {
+  (
+    { className, disabled, id: propsId, label, options, width, ...props },
+    ref
+  ) => {
     const id = useGetId(propsId)
     const {
       handleBlur,
@@ -43,7 +46,8 @@ export const Select = forwardRef<HTMLButtonElement, Props>(
                   !isOpen,
               },
               { 'enabled:hover:border-light-900': !isOpen },
-              'disabled:border-dark-100 disabled:text-dark-100'
+              'disabled:border-dark-100 disabled:text-dark-100',
+              className
             )}
             disabled={disabled}
             id={id}
@@ -52,6 +56,7 @@ export const Select = forwardRef<HTMLButtonElement, Props>(
             ref={ref}
             role='combobox'
             tabIndex={0}
+            {...props}
           >
             <span className='flex items-center gap-2'>
               {selectedOption?.icon}

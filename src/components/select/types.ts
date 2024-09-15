@@ -6,6 +6,7 @@ export type Option = {
   name: string
 }
 export type Props = {
+  className?: string
   disabled?: boolean
   id: string
   label?: string
