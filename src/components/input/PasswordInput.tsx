@@ -9,7 +9,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
     { disabled, label = 'Password', placeholder = 'Enter password', ...props },
     ref
   ) => {
-    const [isPasswordVisible, setIsPasswordVisible] = useState(true)
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
     return (
       <Input
