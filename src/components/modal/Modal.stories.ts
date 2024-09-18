@@ -2,16 +2,17 @@ import { Meta, StoryObj } from '@storybook/react'
 
 import { Modal } from './Modal'
 
-const meta = {
+const meta: Meta<typeof Modal> = {
   component: Modal,
   title: 'Modal',
-} satisfies Meta<typeof Modal>
+}
 
 export default meta
 
-export const Default: StoryObj<typeof meta> = {
+export const Default: StoryObj<typeof Modal> = {
   args: {
     children: 'some text',
-    title: 'some title',
+    isOpened: true,
+    title: 'Components/Modal',
   },
 }
