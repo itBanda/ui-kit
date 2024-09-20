@@ -4,7 +4,6 @@ import { Modal } from './Modal'
 
 const meta: Meta<typeof Modal> = {
   component: Modal,
-  title: 'Modal',
 }
 
 export default meta
