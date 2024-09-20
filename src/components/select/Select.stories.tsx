@@ -7,7 +7,7 @@ import { Select } from './Select'
 
 const meta = {
   component: Select,
-  title: 'Components/mySelect',
+  title: 'Components/Select',
 } satisfies Meta<typeof Select>
 
 export default meta
