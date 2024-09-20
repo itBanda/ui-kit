@@ -1,4 +1,5 @@
 import { join, resolve } from 'node:path'
+import path from 'path'
 
 import react from '@vitejs/plugin-react-swc'
 import tailwindcss from 'tailwindcss'
@@ -38,4 +39,9 @@ export default defineConfig({
     },
   },
   plugins: [react(), svgr()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
 })

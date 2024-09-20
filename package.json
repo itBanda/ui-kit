@@ -1,7 +1,7 @@
 {
   "name": "uikit-inctagram",
   "private": false,
-  "version": "1.0.3",
+  "version": "1.0.5",
   "type": "module",
   "module": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
@@ -39,12 +39,15 @@
     ]
   },
   "dependencies": {
+    "@radix-ui/react-select": "2.1.1",
     "@radix-ui/react-slot": "1.1.0",
     "class-variance-authority": "0.7.0",
     "clsx": "2.1.1",
+    "lucide-react": "0.441.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "tailwind-merge": "2.5.2",
+    "tailwindcss-animate": "1.0.7",
     "vite-plugin-svgr": "4.2.0"
   },
   "devDependencies": {
