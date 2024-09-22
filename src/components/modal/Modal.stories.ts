@@ -8,7 +8,7 @@ const meta: Meta<typeof Modal> = {
 
 export default meta
 
-export const Default: StoryObj<typeof Modal> = {
+export const Default: StoryObj<typeof meta> = {
   args: {
     children: 'some text',
     isOpened: true,
