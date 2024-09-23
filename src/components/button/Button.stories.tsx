@@ -1,6 +1,8 @@
-import { Meta } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { Button } from './Button'
+
+type Story = StoryObj<typeof meta>
 
 const meta = {
   component: Button,
@@ -32,5 +34,13 @@ export const Text = {
     children: 'Button',
     disabled: true,
     variant: 'text',
+  },
+}
+export const LinkAsButton = {
+  args: {
+    asChild: true,
+    children: <a href='#'>Link</a>,
+    disabled: true,
+    variant: 'primary',
   },
 }
