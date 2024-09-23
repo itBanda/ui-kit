@@ -9,7 +9,7 @@ export type ModalProps = {
   title: string
 } & ComponentProps<'div'>
 
-export const Modal = forwardRef<HTMLDivElement, ModalProps & PropsWithChildren>(
+export const Modal = forwardRef<HTMLDivElement, PropsWithChildren<ModalProps>>(
   ({ children, className, isOpened, onClose, title }, ref) => {
     useEffect(() => {
       const handleEscape = (event: KeyboardEvent) => {
