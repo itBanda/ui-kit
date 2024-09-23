@@ -1,51 +1,58 @@
 /** @type {import('tailwindcss').Config} */
+import { palette } from './src/tailwind-palette'
+
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
-  plugins: [],
+  darkMode: ['class'],
+  plugins: [require('tailwindcss-animate')],
   theme: {
     extend: {
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
       colors: {
         accent: {
-          100: '#73A5FF',
-          300: '#4C8DFF',
-          500: '#397DF6',
-          700: '#2F68CC',
-          900: '#234E99',
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
         },
-        danger: {
-          100: '#FF8099',
-          300: '#F23D61',
-          500: '#CC1439',
-          700: '#990F2B',
-          900: '#660A1D',
+        ...palette,
+        background: 'hsl(var(--background))',
+        border: 'hsl(var(--border))',
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
         },
-        dark: {
-          100: '#4C4C4C',
-          300: '#333333',
-          500: '#171717',
-          700: '#0D0D0D',
-          900: '#000000',
+        chart: {
+          1: 'hsl(var(--chart-1))',
+          2: 'hsl(var(--chart-2))',
+          3: 'hsl(var(--chart-3))',
+          4: 'hsl(var(--chart-4))',
+          5: 'hsl(var(--chart-5))',
         },
-        light: {
-          100: '#FFFFFF',
-          300: '#F7FBFF',
-          500: '#EDF3FA',
-          700: '#D5DAE0',
-          900: '#8D9094',
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
         },
-        success: {
-          100: '#80FFBF',
-          300: '#22E584',
-          500: '#14CC70',
-          700: '#0F9954',
-          900: '#0A6638',
+        foreground: 'hsl(var(--foreground))',
+        input: 'hsl(var(--input))',
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
         },
-        warning: {
-          100: '#FFD073',
-          300: '#E5AC39',
-          500: '#D99000',
-          700: '#996600',
-          900: '#664400',
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        ring: 'hsl(var(--ring))',
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
         },
       },
       fontFamily: {

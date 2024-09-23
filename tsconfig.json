@@ -70,7 +70,11 @@
     "noPropertyAccessFromIndexSignature": false,
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": false,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],
   "exclude": ["./src/**/*.stories.*"]
