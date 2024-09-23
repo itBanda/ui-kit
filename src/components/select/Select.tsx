@@ -1,114 +1,107 @@
-import { forwardRef } from 'react'
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  ReactNode,
+  forwardRef,
+  useState,
+} from 'react'
 
-import { useGetId } from '../../hooks'
-import { cn } from '../../utils'
-import { Icon } from '../icon'
-import { Props } from './types'
-import { useSelect } from './useSelect'
+import { useGetId } from '@/hooks'
+import * as SelectPrimitive from '@radix-ui/react-select'
+import { ChevronDown } from 'lucide-react'
 
-export const Select = forwardRef<HTMLButtonElement, Props>(
-  (
-    { className, disabled, id: propsId, label, options, width, ...props },
-    ref
-  ) => {
-    const id = useGetId(propsId)
-    const {
-      handleBlur,
-      handleKeyDown,
-      handleSelect,
-      highlightedIndex,
-      isOpen,
-      selectedOption,
-      setHighlightedIndex,
-      toggleOpen,
-    } = useSelect(options)
+import { cn } from '../../utils/cn'
 
-    return (
-      <div className='w-full' style={{ maxWidth: `${width}px` }}>
-        {label && (
-          <label className={cn('text-sm text-light-900')} htmlFor={id}>
-            {label}
-          </label>
-        )}
-        <div className='relative' onBlur={handleBlur}>
-          <button
-            aria-controls={`${id}-listbox`}
-            aria-expanded={isOpen}
+export const Select = forwardRef<
+  ElementRef<typeof SelectPrimitive.Root>,
+  {
+    className?: string
+    id: string
+    label?: string
+    options: { icon?: ReactNode; label: ReactNode; value: string }[]
+    placeholder?: string
+  } & ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
+>(({ className, id: propsId, label, options, placeholder, ...props }, ref) => {
+  const id = useGetId(propsId)
+
+  const [selectedValue, setSelectedValue] = useState<string | undefined>()
+
+  const selectedOption = options.find(option => option.value === selectedValue)
+
+  return (
+    <div className={cn('w-full', className)}>
+      {label && (
+        <label
+          className={cn('cursor-pointer text-sm text-light-900')}
+          htmlFor={id}
+        >
+          {label}
+        </label>
+      )}
+      <SelectPrimitive.Root
+        {...props}
+        onValueChange={setSelectedValue}
+        value={selectedValue}
+      >
+        <SelectPrimitive.Trigger
+          className={cn(
+            'group flex w-full cursor-pointer items-center justify-between rounded-sm border border-dark-100 bg-transparent px-3 py-[5px] text-light-900 outline-none',
+            'data-[state=open]:rounded-b-none data-[state=open]:border-b-0 data-[state=open]:border-light-100 data-[state=open]:bg-dark-500',
+            { 'text-light-100': label },
+            'hover:text-light-900',
+            'focus:border-transparent focus:ring-2 focus:ring-inset focus:ring-accent-500',
+            'data-[state=open]:ring-0',
+            'disabled:cursor-not-allowed disabled:border-dark-100 disabled:text-dark-100'
+          )}
+          id={id}
+          ref={ref}
+        >
+          {selectedOption ? (
+            <span className='flex items-center gap-3'>
+              {selectedOption.icon && <>{selectedOption.icon}</>}
+              {selectedOption.label}
+            </span>
+          ) : (
+            <span className='text-dark-400'>
+              {placeholder || 'Select an option'}
+            </span>
+          )}
+          <SelectPrimitive.Icon asChild>
+            <ChevronDown className='group-hover:text-light-100 group-disabled:text-dark-100 group-data-[state=open]:rotate-180' />
+          </SelectPrimitive.Icon>
+        </SelectPrimitive.Trigger>
+        <SelectPrimitive.Portal>
+          <SelectPrimitive.Content
             className={cn(
-              'flex w-full cursor-pointer items-center justify-between rounded-sm border border-dark-100 bg-transparent p-1 px-3 text-light-900',
-              { 'text-light-100': label },
-              {
-                'rounded-b-none border-light-100 bg-dark-500 text-light-100 outline-none':
-                  isOpen,
-              },
-              {
-                'enabled:focus:border-accent-500 enabled:focus:ring-1 enabled:focus:ring-accent-500':
-                  !isOpen,
-              },
-              { 'enabled:hover:border-light-900': !isOpen },
-              'disabled:border-dark-100 disabled:text-dark-100',
+              'rounded-b-sm border border-light-100 bg-dark-500 text-light-100',
               className
             )}
-            disabled={disabled}
-            id={id}
-            onClick={toggleOpen}
-            onKeyDown={handleKeyDown}
-            ref={ref}
-            role='combobox'
-            tabIndex={0}
-            {...props}
+            position='popper'
           >
-            <span className='flex items-center gap-2'>
-              {selectedOption?.icon}
-              {selectedOption?.name}
-            </span>
-
-            <span>
-              {isOpen ? (
-                <Icon icon='arrow-up' />
-              ) : (
-                <Icon icon='arrow-down-outline' />
-              )}
-            </span>
-          </button>
-
-          {isOpen && (
-            <ul
-              aria-labelledby={id}
-              className={cn(
-                'absolute z-10 w-full bg-dark-500 text-light-100',
-                'border border-t-0',
-                'rounded-sm',
-                { 'rounded-t-none': isOpen }
-              )}
-              id={`${id}-listbox`}
-              role='listbox'
-              style={{ top: '100%' }}
-            >
-              {options.map((el, index) => (
-                <li
-                  aria-selected={index === highlightedIndex}
+            <SelectPrimitive.Viewport>
+              {options.map(option => (
+                <SelectPrimitive.Item
                   className={cn(
-                    'flex cursor-pointer items-center gap-2 px-3 py-1',
-                    {
-                      'bg-dark-300 text-accent-500': index === highlightedIndex,
-                      'bg-transparent': index !== highlightedIndex,
-                    }
+                    'flex gap-3 px-3 py-1.5 outline-none',
+                    'hover:bg-dark-300 hover:text-accent-500',
+                    'data-[highlighted]:bg-dark-300 data-[highlighted]:text-accent-500'
                   )}
-                  key={el.id}
-                  onMouseDown={() => handleSelect(el)}
-                  onMouseEnter={() => setHighlightedIndex(index)}
+                  key={option.value}
+                  value={option.value}
                 >
-                  {el.icon}
-                  {el.name}
-                </li>
+                  {/* Рендерим иконку для каждой опции */}
+                  {option.icon}
+                  <SelectPrimitive.ItemText>
+                    {option.label}
+                  </SelectPrimitive.ItemText>
+                </SelectPrimitive.Item>
               ))}
-            </ul>
-          )}
-        </div>
-      </div>
-    )
-  }
-)
+            </SelectPrimitive.Viewport>
+          </SelectPrimitive.Content>
+        </SelectPrimitive.Portal>
+      </SelectPrimitive.Root>
+    </div>
+  )
+})
 
 Select.displayName = 'Select'
