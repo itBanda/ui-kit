@@ -38,7 +38,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           className={cn('relative w-full', {
             'cursor-not-allowed': disabled,
           })}
-          style={{ maxWidth: `${width}px` }}
+          style={{ maxWidth: width ? `${width}px` : 'none' }}
         >
           {iconStart && (
             <div
