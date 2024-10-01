@@ -47,7 +47,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             {checked && (
               <Icon
                 className={cn(
-                  'pointer-events-none absolute left-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 cursor-pointer',
+                  'absolute left-1/2 top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 cursor-pointer',
                   {
                     'cursor-not-allowed': disabled,
                   }
