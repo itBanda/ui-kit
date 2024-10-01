@@ -37,7 +37,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
           <span
             className={cn(
-              'absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-sm border-2 bg-transparent transition-all duration-100 peer-checked:bg-light-100 peer-disabled:cursor-not-allowed peer-disabled:border-dark-100 peer-disabled:bg-dark-100 peer-disabled:text-light-700',
+              'pointer-events-none absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-sm border-2 bg-transparent transition-all duration-100 peer-checked:bg-light-100 peer-disabled:cursor-not-allowed peer-disabled:border-dark-100 peer-disabled:bg-dark-100 peer-disabled:text-light-700',
               {
                 'peer-disabled:border-light-900 peer-disabled:bg-transparent':
                   !checked && disabled,
