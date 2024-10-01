@@ -37,7 +37,7 @@ export const Modal = forwardRef<HTMLDivElement, PropsWithChildren<ModalProps>>(
         <div
           aria-labelledby='modal-title'
           className={cn(
-            'w-full max-w-[500px] divide-y-[1px] divide-dark-100 rounded-sm border border-dark-100 bg-dark-300'
+            'w-fit max-w-[500px] divide-y-[1px] divide-dark-100 rounded-sm border border-dark-100 bg-dark-300'
           )}
           onClick={e => e.stopPropagation()}
           ref={ref}
