@@ -14,6 +14,7 @@ export default meta
 export const Default: StoryObj<typeof meta> = {
   args: {
     children: 'some text',
+    className: '',
     isOpened: true,
     title: 'Components/Modal',
   },

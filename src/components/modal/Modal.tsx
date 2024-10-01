@@ -37,7 +37,8 @@ export const Modal = forwardRef<HTMLDivElement, PropsWithChildren<ModalProps>>(
         <div
           aria-labelledby='modal-title'
           className={cn(
-            'w-full max-w-[500px] divide-y-[1px] divide-dark-100 rounded-sm border border-dark-100 bg-dark-300'
+            'w-full max-w-[378px] divide-y-[1px] divide-dark-100 rounded-sm border border-dark-100 bg-dark-300',
+            className
           )}
           onClick={e => e.stopPropagation()}
           ref={ref}
@@ -45,10 +46,7 @@ export const Modal = forwardRef<HTMLDivElement, PropsWithChildren<ModalProps>>(
           tabIndex={-1}
         >
           <div className='flex flex-row justify-between px-[24px] pb-[11px] pt-[12px]'>
-            <h3
-              className='text-xl font-bold leading-[36px] text-light-100'
-              id='modal-title'
-            >
+            <h3 className='text-xl font-bold leading-[36px] text-light-100'>
               {title}
             </h3>
             <Icon
@@ -59,12 +57,7 @@ export const Modal = forwardRef<HTMLDivElement, PropsWithChildren<ModalProps>>(
               onClick={onClose}
             />
           </div>
-          <div
-            className={cn(
-              'flex flex-col px-[24px] py-[30px] text-white',
-              className
-            )}
-          >
+          <div className={cn('flex flex-col px-[24px] py-[30px] text-white')}>
             {children}
           </div>
         </div>
