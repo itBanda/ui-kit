@@ -111,7 +111,6 @@ export const Select = forwardRef<
                     key={option.value}
                     value={option.value}
                   >
-                    {/* Рендерим иконку для каждой опции */}
                     {option.icon}
                     <SelectPrimitive.ItemText>
                       {option.label}
