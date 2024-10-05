@@ -1,7 +1,6 @@
 import {
   ComponentPropsWithoutRef,
   ElementRef,
-  ReactNode,
   forwardRef,
   useState,
 } from 'react'
@@ -11,6 +10,7 @@ import * as SelectPrimitive from '@radix-ui/react-select'
 import { ChevronDown } from 'lucide-react'
 
 import { cn } from '../../utils/cn'
+import { Option } from './types'
 
 export const Select = forwardRef<
   ElementRef<typeof SelectPrimitive.Root>,
@@ -19,8 +19,9 @@ export const Select = forwardRef<
     id: string
     label?: string
     onValueChange?: (value: string) => void
-    options: { icon?: ReactNode; label: ReactNode; value: string }[]
+    options: Option[]
     placeholder?: string
+    value?: string
   } & ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
 >(
   (
@@ -31,13 +32,16 @@ export const Select = forwardRef<
       onValueChange,
       options,
       placeholder,
+      value,
       ...props
     },
     ref
   ) => {
     const id = useGetId(propsId)
 
-    const [selectedValue, setSelectedValue] = useState<string | undefined>()
+    const [selectedValue, setSelectedValue] = useState<string | undefined>(
+      value
+    )
 
     const handleValueChange = (value: string) => {
       setSelectedValue(value)

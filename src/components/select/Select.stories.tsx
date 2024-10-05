@@ -26,7 +26,10 @@ export const Default: StoryObj<typeof meta> = {
       },
       { label: 'Option 2', value: 'option2' },
       { label: 'Option 3', value: 'option3' },
+      { label: 'Russian', value: 'ru' },
+      { label: 'English', value: 'en' },
     ],
     placeholder: 'Choose option',
+    value: 'ru',
   },
 }
