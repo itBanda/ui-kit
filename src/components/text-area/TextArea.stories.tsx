@@ -15,7 +15,23 @@ export default meta
 
 export const Default: StoryObj<typeof meta> = {
   args: {
+    defaultValue: 'Text area',
     label: 'Text-Area',
-    value: 'Text area',
+  },
+}
+
+export const Error: StoryObj<typeof meta> = {
+  args: {
+    defaultValue: 'Text area',
+    errorText: 'Error text',
+    label: 'Text-Area',
+  },
+}
+
+export const Disabled: StoryObj<typeof meta> = {
+  args: {
+    defaultValue: 'Text area',
+    disabled: true,
+    label: 'Text-Area',
   },
 }
