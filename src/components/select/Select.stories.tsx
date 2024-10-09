@@ -14,10 +14,11 @@ export default meta
 
 export const Default: StoryObj<typeof meta> = {
   args: {
-    className: 'w-[210px] ',
+    className: 'w-[210px]',
     disabled: false,
     id: '',
     label: 'Select-box',
+    onValueChange: () => {},
     options: [
       {
         icon: <Icon className='inline' icon='paypal' />,

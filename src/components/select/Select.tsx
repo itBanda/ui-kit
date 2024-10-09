@@ -1,9 +1,4 @@
-import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  useState,
-} from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { useGetId } from '@/hooks'
 import * as SelectPrimitive from '@radix-ui/react-select'
@@ -18,7 +13,7 @@ export const Select = forwardRef<
     className?: string
     id: string
     label?: string
-    onValueChange?: (value: string) => void
+    onValueChange: (value: string) => void
     options: Option[]
     placeholder?: string
     value?: string
@@ -39,20 +34,11 @@ export const Select = forwardRef<
   ) => {
     const id = useGetId(propsId)
 
-    const [selectedValue, setSelectedValue] = useState<string | undefined>(
-      value
-    )
-
     const handleValueChange = (value: string) => {
-      setSelectedValue(value)
-      if (onValueChange) {
-        onValueChange(value)
-      }
+      onValueChange(value)
     }
 
-    const selectedOption = options.find(
-      option => option.value === selectedValue
-    )
+    const selectedOption = options.find(option => option.value === value)
 
     return (
       <div className={cn('w-full', className)}>
@@ -67,7 +53,7 @@ export const Select = forwardRef<
         <SelectPrimitive.Root
           {...props}
           onValueChange={handleValueChange}
-          value={selectedValue}
+          value={value}
         >
           <SelectPrimitive.Trigger
             className={cn(
