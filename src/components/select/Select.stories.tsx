@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Meta, StoryObj } from '@storybook/react'
 
@@ -32,5 +32,10 @@ export const Default: StoryObj<typeof meta> = {
     ],
     placeholder: 'Choose option',
     value: 'ru',
+  },
+  render: args => {
+    const [value, setValue] = useState<string>('')
+
+    return <Select {...args} onValueChange={setValue} value={value} />
   },
 }

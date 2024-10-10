@@ -11,32 +11,18 @@ export const Select = forwardRef<
   ElementRef<typeof SelectPrimitive.Root>,
   {
     className?: string
-    id: string
+    id?: string
     label?: string
-    onValueChange: (value: string) => void
     options: Option[]
     placeholder?: string
-    value?: string
+    value: string
   } & ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
 >(
   (
-    {
-      className,
-      id: propsId,
-      label,
-      onValueChange,
-      options,
-      placeholder,
-      value,
-      ...props
-    },
+    { className, id: propsId, label, options, placeholder, value, ...props },
     ref
   ) => {
     const id = useGetId(propsId)
-
-    const handleValueChange = (value: string) => {
-      onValueChange(value)
-    }
 
     const selectedOption = options.find(option => option.value === value)
 
@@ -50,11 +36,7 @@ export const Select = forwardRef<
             {label}
           </label>
         )}
-        <SelectPrimitive.Root
-          {...props}
-          onValueChange={handleValueChange}
-          value={value}
-        >
+        <SelectPrimitive.Root {...props} value={value}>
           <SelectPrimitive.Trigger
             className={cn(
               'group flex w-full cursor-pointer items-center justify-between rounded-sm border border-dark-100 bg-transparent px-3 py-[5px] text-light-900 outline-none',
