@@ -1,10 +1,10 @@
-import { PropsWithChildren, ReactNode, forwardRef } from 'react'
+import { ReactNode, forwardRef } from 'react'
 
 import { cn } from '@/utils'
-import * as Tabs from '@radix-ui/react-tabs'
+import * as RadixTabs from '@radix-ui/react-tabs'
 
-export type TabProps = {
-  TabData: Array<{
+type TabsProps = {
+  tabsData: Array<{
     content: ReactNode
     disabled?: boolean
     title: string
@@ -12,17 +12,17 @@ export type TabProps = {
   }>
 }
 
-export const Tab = forwardRef<HTMLDivElement, PropsWithChildren<TabProps>>(
-  ({ TabData, ...props }, ref) => {
+export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
+  ({ tabsData }, ref) => {
     return (
-      <Tabs.Root
+      <RadixTabs.Root
         className='flex h-9 w-[972px] flex-col pt-6'
-        defaultValue={TabData[0].value}
+        defaultValue={tabsData[0]?.value}
         ref={ref}
       >
-        <Tabs.List className='flex w-full'>
-          {TabData.map(tab => (
-            <Tabs.Trigger
+        <RadixTabs.List className='flex w-full'>
+          {tabsData.map(tab => (
+            <RadixTabs.Trigger
               className={cn(
                 'flex-1 border-b-2 border-dark-100 px-4 py-1.5 text-base font-semibold text-dark-100 transition duration-200',
                 'focus:rounded-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent-500',
@@ -42,17 +42,17 @@ export const Tab = forwardRef<HTMLDivElement, PropsWithChildren<TabProps>>(
               value={tab.value}
             >
               {tab.title}
-            </Tabs.Trigger>
+            </RadixTabs.Trigger>
           ))}
-        </Tabs.List>
-        {TabData.map(tab => (
-          <Tabs.Content key={tab.value} value={tab.value}>
+        </RadixTabs.List>
+        {tabsData.map(tab => (
+          <RadixTabs.Content key={tab.value} value={tab.value}>
             {tab.content}
-          </Tabs.Content>
+          </RadixTabs.Content>
         ))}
-      </Tabs.Root>
+      </RadixTabs.Root>
     )
   }
 )
 
-Tab.displayName = 'Tab'
+Tabs.displayName = 'Tabs'
