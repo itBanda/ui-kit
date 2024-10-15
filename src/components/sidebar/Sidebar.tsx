@@ -2,9 +2,7 @@ import { ComponentProps, forwardRef } from 'react'
 
 import { cn } from '@/utils'
 
-type Props = {
-  className?: string
-} & ComponentProps<'aside'>
+type Props = ComponentProps<'aside'>
 
 export const SideBar = forwardRef<HTMLElement, Props>(
   ({ children, className, ...props }, ref) => {

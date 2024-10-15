@@ -1,5 +1,6 @@
 import { Button } from '@/components/button'
 import { Icon } from '@/components/icon'
+import { IconName } from '@/components/icon/Icon'
 import { SideBar } from '@/components/sidebar/Sidebar'
 import { Meta, StoryObj } from '@storybook/react'
 
@@ -7,9 +8,14 @@ const meta: Meta<typeof SideBar> = {
   component: SideBar,
 }
 
+type Menu = {
+  href: string
+  icon: IconName
+  label: string
+}
 export default meta
 
-const menu1 = [
+const menu1: Menu[] = [
   {
     href: '#',
     icon: 'home-outline',
@@ -36,7 +42,7 @@ const menu1 = [
     label: 'Search',
   },
 ]
-const menu2 = [
+const menu2: Menu[] = [
   {
     href: '#',
     icon: 'trending-up-outline',
@@ -53,36 +59,34 @@ export const Default: StoryObj<typeof meta> = {
   render: () => {
     return (
       <SideBar>
-        <nav className='flex flex-col items-center pb-[35px] pt-[72px] font-medium text-light-100'>
-          <ul className='flex flex-col gap-[24px]'>
+        <nav className='flex flex-col items-center self-start font-medium text-light-100'>
+          <ul className='justify-s flex flex-col gap-6'>
             {menu1.map((el, index) => (
               <li className='transition hover:text-accent-100' key={index}>
-                <a className='flex gap-[12px]' href={el.href}>
+                <a className='flex gap-3' href={el.href}>
                   <Icon icon={el.icon} />
                   {el.label}
                 </a>
               </li>
             ))}
           </ul>
-          <ul className='mt-[60px] flex flex-col gap-[24px]'>
+          <ul className='mt-[60px] flex flex-col gap-6 self-start'>
             {menu2.map((el, index) => (
-              <li
-                className='min-w-[121.05px] transition hover:text-accent-100'
-                key={index}
-              >
-                <a className='flex gap-[12px]' href={el.href}>
+              <li className='transition hover:text-accent-100' key={index}>
+                <a className='flex gap-3' href={el.href}>
                   <Icon icon={el.icon} />
                   {el.label}
                 </a>
               </li>
             ))}
           </ul>
-          <div className='mt-auto flex min-w-[121.05px] gap-[12px] transition hover:text-accent-100'>
+          <Button
+            className='mt-auto flex gap-3 self-start p-0 font-medium text-light-100 transition hover:text-accent-100'
+            variant='text'
+          >
             <Icon icon='log-out-outline' />
-            <Button className='p-0 font-medium text-light-100' variant='text'>
-              Log Out
-            </Button>
-          </div>
+            Log Out
+          </Button>
         </nav>
       </SideBar>
     )
