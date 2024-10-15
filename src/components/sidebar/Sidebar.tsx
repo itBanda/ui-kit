@@ -10,9 +10,7 @@ export const SideBar = forwardRef<HTMLElement, Props>(
       <aside
         className={cn(
           'flex w-[220px] justify-center overflow-y-auto border-r border-dark-300',
-          {
-            className,
-          }
+          className
         )}
         ref={ref}
         {...props}
