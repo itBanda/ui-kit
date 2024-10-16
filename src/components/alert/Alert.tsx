@@ -7,7 +7,7 @@ import { Icon } from '../icon'
 export type AlertProps = {
   isOpened: boolean
   message: string
-  onClose: () => void
+  onClose?: () => void
   type: 'error' | 'success' | 'warning'
 } & ComponentProps<'div'>
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(
@@ -19,18 +19,18 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
     return (
       <div
         className={cn(
-          'flex h-12 w-[387px] flex-row justify-between border px-[24px] pb-[12px] pt-[12px] text-light-100',
+          'flex w-[387px] flex-row justify-between border px-6 py-3 text-light-100',
           {
             'border-danger-500 bg-danger-900': type === 'error',
             'border-success-500 bg-success-900': type === 'success',
             'border-warning-500 bg-warning-900': type === 'warning',
-            className,
-          }
+          },
+          className
         )}
         ref={ref}
       >
         <span>
-          {type === 'error' && <b>Error! </b>}
+          {type === 'error'}
           {message}
         </span>
         {onClose && (
