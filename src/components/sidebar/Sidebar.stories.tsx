@@ -59,7 +59,7 @@ export const Default: StoryObj<typeof meta> = {
   render: () => {
     return (
       <SideBar>
-        <nav className='flex h-full flex-col items-center self-start font-medium text-light-100'>
+        <nav className='flex h-dvh flex-col items-center self-start font-medium text-light-100'>
           <ul className='justify-s flex flex-col gap-6'>
             {menu1.map((el, index) => (
               <li className='transition hover:text-accent-100' key={index}>
