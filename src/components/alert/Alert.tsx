@@ -29,10 +29,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
         )}
         ref={ref}
       >
-        <span>
-          {type === 'error'}
-          {message}
-        </span>
+        <span>{message}</span>
         {onClose && (
           <Icon
             color='white'
