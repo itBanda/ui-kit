@@ -1,10 +1,13 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 import { palette } from './src/tailwind-palette'
 
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   darkMode: ['class'],
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    require('tailwind-scrollbar')({ preferredStrategy: 'pseudoelements' }),
+  ],
   theme: {
     extend: {
       borderRadius: {
