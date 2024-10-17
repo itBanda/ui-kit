@@ -1,4 +1,4 @@
-import { ComponentProps, forwardRef } from 'react'
+import { ComponentProps, ReactNode, forwardRef } from 'react'
 
 import { cn } from '@/utils'
 
@@ -6,7 +6,7 @@ import { Icon } from '../icon'
 
 export type AlertProps = {
   isOpened: boolean
-  message: string
+  message: ReactNode
   onClose?: () => void
   type: 'error' | 'success' | 'warning'
 } & ComponentProps<'div'>
@@ -29,7 +29,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
         )}
         ref={ref}
       >
-        <span>{message}</span>
+        {message}
         {onClose && (
           <Icon
             color='white'
