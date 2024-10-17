@@ -13,11 +13,13 @@ export default meta
 
 export const Default: StoryObj<typeof meta> = {
   args: {
-    disabled: true,
+    disabled: false,
     errorText: '',
-    // iconStart: (
-    //   <Icon cursor='pointer' height={20} icon='search-outline' width={20} />
-    // ), // not deleted
+    iconStart: (
+      <Icon cursor='pointer' height={20} icon='search-outline' width={20} />
+    ), // not deleted
+    isRequired: true,
+    label: 'Label',
     placeholder: 'enter text',
     width: 280,
   },

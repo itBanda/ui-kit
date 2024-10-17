@@ -13,6 +13,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       iconEnd,
       iconStart,
       id: propsId,
+      isRequired,
       label,
       width,
       ...props
@@ -32,6 +33,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             htmlFor={id}
           >
             {label}
+            {isRequired && <span className='text-danger-500'>*</span>}
           </label>
         )}
         <div
