@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Meta, StoryObj } from '@storybook/react'
 
@@ -14,10 +14,11 @@ export default meta
 
 export const Default: StoryObj<typeof meta> = {
   args: {
-    className: 'w-[210px] ',
+    className: 'w-[210px]',
     disabled: false,
     id: '',
     label: 'Select-box',
+    onValueChange: () => {},
     options: [
       {
         icon: <Icon className='inline' icon='paypal' />,
@@ -26,7 +27,15 @@ export const Default: StoryObj<typeof meta> = {
       },
       { label: 'Option 2', value: 'option2' },
       { label: 'Option 3', value: 'option3' },
+      { label: 'Russian', value: 'ru' },
+      { label: 'English', value: 'en' },
     ],
     placeholder: 'Choose option',
+    value: 'ru',
+  },
+  render: args => {
+    const [value, setValue] = useState<string>('')
+
+    return <Select {...args} onValueChange={setValue} value={value} />
   },
 }
