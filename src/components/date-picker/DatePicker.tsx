@@ -49,7 +49,10 @@ export const DatePicker = forwardRef<HTMLInputElement, Props>(
 
     return (
       <Popover>
-        <PopoverTrigger asChild className='text-left'>
+        <PopoverTrigger
+          asChild
+          className='text-left data-[state=open]:bg-dark-500'
+        >
           <Input
             disabled={disabled}
             errorText={errorText}
@@ -62,7 +65,11 @@ export const DatePicker = forwardRef<HTMLInputElement, Props>(
             width={width}
           />
         </PopoverTrigger>
-        <PopoverContent className='w-auto rounded-sm border-none p-0 shadow-none'>
+        <PopoverContent
+          align='start'
+          className='w-auto rounded-sm border-none p-0 shadow-none'
+          sideOffset={1}
+        >
           <DayPicker
             {...props}
             classNames={{
