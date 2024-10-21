@@ -16,7 +16,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
   ({ tabsData }, ref) => {
     return (
       <RadixTabs.Root
-        className='flex h-9 flex-col pt-6'
+        className='flex flex-col'
         defaultValue={tabsData[0]?.value}
         ref={ref}
       >
