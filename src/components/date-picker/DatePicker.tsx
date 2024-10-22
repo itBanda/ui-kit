@@ -2,6 +2,7 @@ import { forwardRef } from 'react'
 import {
   DayPicker,
   DayPickerProps,
+  PropsBase,
   PropsSingle,
   getDefaultClassNames,
 } from 'react-day-picker'
@@ -22,7 +23,8 @@ type Props = {
   id?: string
   label?: string
   width?: number
-} & PropsSingle
+} & PropsBase &
+  PropsSingle
 
 const defaultClassNames = getDefaultClassNames()
 const modifiers: DayPickerProps['modifiers'] = {

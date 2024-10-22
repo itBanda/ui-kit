@@ -15,6 +15,7 @@ type Story = StoryObj<typeof meta>
 
 export const DatePickerExample: Story = {
   args: {
+    captionLayout: 'dropdown',
     disabled: false,
     label: 'Date of birth',
     mode: 'single',
