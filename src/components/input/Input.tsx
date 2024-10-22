@@ -37,7 +37,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
         <div
-          className={cn('relative w-full', {
+          className={cn('group relative w-full', {
             'cursor-not-allowed': disabled,
           })}
           style={{ maxWidth: width ? `${width}px` : 'none' }}
@@ -58,16 +58,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <input
             className={cn(
               'w-full rounded-sm border border-dark-100 bg-transparent px-3 py-[6px] text-base text-light-100 transition placeholder:text-light-900',
-              'enabled:focus:hover:border-transparent',
+              'enabled:focus:group-hover:border-transparent',
               'disabled:cursor-not-allowed disabled:text-dark-100 disabled:placeholder:text-dark-100',
               'focus:border-transparent focus:outline-none focus:ring-1 focus:ring-accent-500',
               { 'pr-10': iconEnd },
               { 'pl-10': iconStart },
               {
-                'border-danger-500 focus:border-danger-500 focus:ring-0 enabled:focus:hover:border-danger-500':
+                'border-danger-500 focus:border-danger-500 focus:ring-0 enabled:focus:group-hover:border-danger-500':
                   errorText,
               },
-              { 'enabled:hover:border-light-900': !errorText },
+              { 'enabled:group-hover:border-light-900': !errorText },
               { 'border-dark-100': disabled },
               className
             )}
