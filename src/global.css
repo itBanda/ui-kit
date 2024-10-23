@@ -72,6 +72,11 @@
   }
 }
 
+.SelectContent {
+	width: var(--radix-select-trigger-width);
+	max-height: var(--radix-select-content-available-height);
+}
+
 .custom-scrollbar::-webkit-scrollbar-thumb {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
