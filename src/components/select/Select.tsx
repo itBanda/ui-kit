@@ -1,11 +1,4 @@
-import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { useGetId } from '@/hooks'
 import * as SelectPrimitive from '@radix-ui/react-select'
@@ -30,13 +23,7 @@ export const Select = forwardRef<
     ref
   ) => {
     const id = useGetId(propsId)
-    const [triggerWidth, setTriggerWidth] = useState<number>(100)
-    const triggerRef = useRef<HTMLButtonElement | null>(null)
     const selectedOption = options.find(option => option.value === value)
-
-    useEffect(() => {
-      if (triggerRef.current) setTriggerWidth(triggerRef?.current.offsetWidth)
-    }, [triggerRef])
 
     return (
       <div className={cn('w-full', className)} ref={ref}>
@@ -60,7 +47,6 @@ export const Select = forwardRef<
               'disabled:cursor-not-allowed disabled:border-dark-100 disabled:text-dark-100'
             )}
             id={id}
-            ref={triggerRef}
           >
             {selectedOption ? (
               <span className='flex items-center gap-3'>
@@ -80,10 +66,10 @@ export const Select = forwardRef<
             <SelectPrimitive.Content
               className={cn(
                 'rounded-b-sm border border-light-100 bg-dark-500 text-light-100',
+                'SelectContent',
                 className
               )}
               position='popper'
-              style={{ width: triggerWidth }}
             >
               <SelectPrimitive.Viewport>
                 {options.map(option => (
