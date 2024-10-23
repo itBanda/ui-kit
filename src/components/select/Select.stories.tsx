@@ -14,7 +14,7 @@ export default meta
 
 export const Default: StoryObj<typeof meta> = {
   args: {
-    className: 'w-1/2',
+    className: 'w-1/3 ',
     disabled: false,
     id: '',
     label: 'Select-box',
