@@ -25,7 +25,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         )}
         <textarea
           className={cn(
-            'custom-scrollbar w-full resize-none rounded-md border border-dark-100 bg-transparent p-2 text-sm text-light-900 outline-none transition-all scrollbar-thin focus:border-accent-700 focus:text-light-100 active:border-light-100 active:text-light-100 disabled:cursor-not-allowed disabled:text-dark-100',
+            'custom-scrollbar w-full resize-none rounded-md border border-dark-100 bg-dark-500 p-2 text-sm text-light-900 outline-none transition-all scrollbar-thin focus:border-accent-700 focus:text-light-100 active:border-light-100 active:text-light-100 disabled:cursor-not-allowed disabled:text-dark-100',
             {
               'border-danger-500 text-light-100': errorText,
             }
