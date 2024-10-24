@@ -3,7 +3,7 @@ name: Publish npm package
 on:
   push:
     branches:
-      - dev
+      - chore/BD-63-automating-npm-publish
 
 jobs:
   publish:
