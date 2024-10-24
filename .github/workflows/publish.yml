@@ -30,12 +30,17 @@ jobs:
       - name: Build project
         run: pnpm run build
 
-      - name: Bump version and push tag
+      - name: Bump version and commit
         run: |
-          pnpm version patch 
+          pnpm version patch
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git push --follow-tags
+          git add package.json pnpm-lock.yaml
+          git commit -m "ci: bump version"
+          git push
+
+      - name: Push tags
+        run: git push --follow-tags
 
       - name: Publish to npm
         run: pnpm publish
