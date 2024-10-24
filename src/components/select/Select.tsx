@@ -23,11 +23,10 @@ export const Select = forwardRef<
     ref
   ) => {
     const id = useGetId(propsId)
-
     const selectedOption = options.find(option => option.value === value)
 
     return (
-      <div className={cn('w-full', className)}>
+      <div className={cn('w-full', className)} ref={ref}>
         {label && (
           <label
             className={cn('cursor-pointer text-sm text-light-900')}
@@ -48,7 +47,6 @@ export const Select = forwardRef<
               'disabled:cursor-not-allowed disabled:border-dark-100 disabled:text-dark-100'
             )}
             id={id}
-            ref={ref}
           >
             {selectedOption ? (
               <span className='flex items-center gap-3'>
@@ -68,6 +66,7 @@ export const Select = forwardRef<
             <SelectPrimitive.Content
               className={cn(
                 'rounded-b-sm border border-light-100 bg-dark-500 text-light-100',
+                'SelectContent',
                 className
               )}
               position='popper'
